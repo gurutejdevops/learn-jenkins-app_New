@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        NETLIFY_SITE_ID = 'c8c50649-0e9f-490e-9ea8-abddcf29db20'
+        NETLIFY_PROJECT_ID = 'c8c50649-0e9f-490e-9ea8-abddcf29db20'
         NETLIFY_AUTH_TOKEN = credentials('netlify-token')
     }
 
@@ -87,7 +87,7 @@ pipeline {
                    node_modules/.bin/netlify --version
                    node_modules/.bin/netlify status
                    node_modules/.bin/netlify deploy --dir=/var/jenkins_home/workspace/learn-jenkins-app/build --prod
-                   echo "Deploying to production site id: $NETLIFY_SITE_ID"
+                   echo "Deploying to production site id: $NETLIFY_PROJECT_ID"
                    
                 '''
             }
