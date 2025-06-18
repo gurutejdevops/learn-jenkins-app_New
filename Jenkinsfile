@@ -10,7 +10,7 @@ pipeline {
         stage ('Build') {
             agent {
                 docker {
-                    image 'node:18-alpine'
+                    image 'node:20.12.2-alpine'
                     reuseNode true
                 }
             }
@@ -31,7 +31,7 @@ pipeline {
                 stage ('UNIT Test') {
                     agent {
                         docker {
-                            image 'node:18-alpine'
+                            image 'node:20.12.2-alpine'
                             reuseNode true
                         }
                     }
@@ -75,7 +75,7 @@ pipeline {
         stage ('Deploy') {
             agent {
                 docker {
-                    image 'node:18-alpine'
+                    image 'node:20.12.2-alpine'
                     reuseNode true
                 }
             }
@@ -84,7 +84,6 @@ pipeline {
                    npm install netlify-cli@latest
                    node_modules/.bin/netlify --version
                    node_modules/.bin/netlify status
-                   npm run build
                    node_modules/.bin/netlify deploy --dir=build --prod
                    echo "Deploying to production site id: $NETLIFY_SITE_ID"
                    
